@@ -1,5 +1,17 @@
 # Gimnario App
 
+## Installation
+
+```bash
+flutter pub get
+```
+
+## Run
+
+```bash
+flutter run
+```
+
 ## My process
 
 ### Built with
