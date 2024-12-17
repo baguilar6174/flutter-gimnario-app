@@ -18,14 +18,11 @@ flutter run
 
 - Flutter 3.27.0
 - Dart 3.6.0
-
-### What I learned
-
 - 
 
 ## Development Features
 
-- 
+- Application ID: `app.baguilar6174.gimnario`
 - 
 
 ## Improves and TODOS
