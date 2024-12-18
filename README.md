@@ -25,6 +25,34 @@ flutter run
 - Application ID: `app.baguilar6174.gimnario`
 - 
 
+## Features
+
+- Manage workouts
+  - Manage times (stopwatches or timers)
+  - Notes
+  - Exercises
+    - Reps and weight
+- Manage exercises
+  - Manage categories
+    - By muscle group
+    - By equipment
+  - Details
+    - Media sources (images or videos)
+    - Name
+    - Description
+    - Instructions
+    - Advices
+- User Profile
+  - weight
+  - height
+  - age
+  - gender
+  - other measurements
+- History
+  - Export data
+  - Import data
+  - Calendar
+
 ## Improves and TODOS
 
 - 
