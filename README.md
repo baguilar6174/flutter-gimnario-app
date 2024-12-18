@@ -23,7 +23,8 @@ flutter run
 ## Development Features
 
 - Application ID: `app.baguilar6174.gimnario`
-- 
+- Clean Architecture
+- Local database
 
 ## Features
 
@@ -52,10 +53,14 @@ flutter run
   - Export data
   - Import data
   - Calendar
+- Settings
+  - Language
+  - Theme (light or dark)
+  - Notifications
 
 ## Improves and TODOS
 
-- 
+- Integrate with external API
 
 ## Stay in touch
 
