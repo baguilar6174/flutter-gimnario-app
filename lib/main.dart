@@ -15,6 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Gimnario App',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color.fromRGBO(255, 121, 198, 1),
+        ),
+      ),
       home: ExcercisePage(),
     );
   }
