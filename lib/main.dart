@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           seedColor: Color.fromRGBO(255, 121, 198, 1),
         ),
       ),
-      home: ExcercisePage(),
+      home: HomePage(),
     );
   }
 }
