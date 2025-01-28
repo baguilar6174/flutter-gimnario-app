@@ -1,41 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key});
+  final int currentIndex;
+  final void Function(int) onTap;
 
-  int _getCurrentIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).uri.toString();
-    switch (location) {
-      case '/':
-        return 0;
-      case '/exercises':
-        return 1;
-      case '/report':
-        return 2;
-      case '/profile':
-        return 3;
-      default:
-        return 0;
-    }
-  }
-
-  void _onItemTapped(BuildContext context, int index) {
-    switch (index) {
-      case 0:
-        context.go('/');
-        break;
-      case 1:
-        context.go('/exercises');
-        break;
-      case 2:
-        context.go('/report');
-        break;
-      case 3:
-        context.go('/profile');
-        break;
-    }
-  }
+  const CustomBottomNavigationBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +17,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
       selectedItemColor: Color.fromRGBO(255, 121, 198, 1),
       unselectedItemColor: Colors.grey,
       backgroundColor: Colors.white,
-      currentIndex: _getCurrentIndex(context),
-      onTap: (value) => _onItemTapped(context, value),
+      currentIndex: currentIndex,
+      onTap: onTap,
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.fitness_center),
