@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ExcercisePage extends StatelessWidget {
-  const ExcercisePage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Excercises'),
+        title: const Text('Profile'),
       ),
       body: Center(
-        child: Text('Excercises Page'),
+        child: Text('Profile Page'),
       ),
     );
   }

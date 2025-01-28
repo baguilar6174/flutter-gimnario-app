@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       title: 'Gimnario App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -21,7 +22,6 @@ class MyApp extends StatelessWidget {
           seedColor: Color.fromRGBO(255, 121, 198, 1),
         ),
       ),
-      home: HomePage(),
     );
   }
 }

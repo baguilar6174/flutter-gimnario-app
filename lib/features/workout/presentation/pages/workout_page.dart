@@ -5,8 +5,10 @@ class WorkoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Hello, world from workout!'),
+    return Scaffold(
+      body: Center(
+        child: Text('Workouts Page'),
+      ),
     );
   }
 }
