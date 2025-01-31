@@ -1,27 +1,24 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-import 'features/features.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:flutter_gimnario_app/gimnario_app.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  runZonedGuarded(
+    /// Lock device orientation to portrait
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      return SystemChrome.setPreferredOrientations(
+        [
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ],
+      ).then((_) => runApp(GimnarioApp()));
+    },
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: appRouter,
-      title: 'Gimnario App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromRGBO(255, 121, 198, 1),
-        ),
-      ),
-    );
-  }
+    /// Catch any errors
+    (error, stackTrace) => {},
+  );
 }
