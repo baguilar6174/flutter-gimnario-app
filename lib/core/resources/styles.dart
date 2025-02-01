@@ -79,6 +79,7 @@ ThemeData themeLight(BuildContext context) => ThemeData(
             .copyWith(statusBarColor: Colors.transparent),
         surfaceTintColor: Palette.background,
         shadowColor: Palette.shadow,
+        elevation: 1,
       ),
       drawerTheme: const DrawerThemeData().copyWith(
         elevation: Dimens.zero,
@@ -195,7 +196,10 @@ ThemeData themeDark(BuildContext context) => ThemeData(
             ),
       ),
       appBarTheme: const AppBarTheme().copyWith(
-        titleTextStyle: Theme.of(context).textTheme.bodyLarge,
+        titleTextStyle: Theme.of(context)
+            .textTheme
+            .bodyLarge
+            ?.copyWith(color: Palette.textDark),
         iconTheme: const IconThemeData(color: Palette.iconDark),
         color: Palette.backgroundDark,
         systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
@@ -203,6 +207,7 @@ ThemeData themeDark(BuildContext context) => ThemeData(
         ),
         surfaceTintColor: Palette.backgroundDark,
         shadowColor: Palette.shadowDark,
+        elevation: 1,
       ),
       drawerTheme: const DrawerThemeData().copyWith(
         elevation: Dimens.zero,
