@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'features/features.dart';
+import 'package:flutter_gimnario_app/core/core.dart';
+import 'package:flutter_gimnario_app/features/features.dart';
 
 class GimnarioApp extends StatelessWidget {
   const GimnarioApp({super.key});
@@ -15,26 +17,30 @@ class GimnarioApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp.router(
-      routerConfig: appRouter,
-      debugShowCheckedModeBanner: false,
-      builder: (BuildContext context, Widget? child) {
-        final MediaQueryData data = MediaQuery.of(context);
-        return MediaQuery(
-          data: data.copyWith(
-            textScaler: TextScaler.noScaling,
-            alwaysUse24HourFormat: true,
-          ),
-          child: child!,
+    return ScreenUtilInit(
+      designSize: const Size(375, 667),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, __) {
+        return MaterialApp.router(
+          routerConfig: appRouter,
+          debugShowCheckedModeBanner: false,
+          builder: (BuildContext context, Widget? child) {
+            final MediaQueryData data = MediaQuery.of(context);
+            return MediaQuery(
+              data: data.copyWith(
+                textScaler: TextScaler.noScaling,
+                alwaysUse24HourFormat: true,
+              ),
+              child: child!,
+            );
+          },
+          title: Constants.get.appName,
+          theme: themeLight(context),
+          darkTheme: themeDark(context),
+          themeMode: ThemeMode.dark,
         );
       },
-      title: 'Gimnario App',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromRGBO(255, 121, 198, 1),
-        ),
-      ),
     );
   }
 }
