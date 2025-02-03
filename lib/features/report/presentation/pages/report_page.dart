@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gimnario_app/core/core.dart';
 import 'package:flutter_gimnario_app/features/features.dart';
 
 class ReportPage extends StatelessWidget {
@@ -8,9 +9,9 @@ class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Report"),
+      appBar: CustomAppBar(title: Strings.of(context)!.report),
       body: Center(
-        child: Text('Report Page'),
+        child: Text(Strings.of(context)!.report),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gimnario_app/core/core.dart';
 import 'package:flutter_gimnario_app/features/features.dart';
 
 class WorkoutPage extends StatelessWidget {
@@ -8,9 +9,11 @@ class WorkoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Workouts"),
+      appBar: CustomAppBar(
+        title: Strings.of(context)!.workout,
+      ),
       body: Center(
-        child: Text('Workouts Page'),
+        child: Text(Strings.of(context)!.workout),
       ),
     );
   }

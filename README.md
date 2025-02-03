@@ -6,6 +6,14 @@
 flutter pub get
 ```
 
+## Localization
+
+If you add new texts, you need to run the following command:
+
+```bash
+flutter pub get
+```
+
 ## Run
 
 ```bash
@@ -24,7 +32,8 @@ flutter run
 
 - Application ID: `app.baguilar6174.gimnario`
 - Clean Architecture
-- Local database
+- Responsive UI
+- Internationalization (en, es)
 
 ## Features
 

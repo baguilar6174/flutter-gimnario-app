@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gimnario_app/core/core.dart';
+
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final void Function(int) onTap;
@@ -19,19 +21,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.fitness_center),
-          label: 'Workouts',
+          label: Strings.of(context)!.workout,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.sports_handball),
-          label: 'Exercises',
+          label: Strings.of(context)!.excercise,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.leaderboard),
-          label: 'Report',
+          label: Strings.of(context)!.report,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Profile',
+          label: Strings.of(context)!.profile,
         ),
       ],
     );

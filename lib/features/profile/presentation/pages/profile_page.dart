@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gimnario_app/core/core.dart';
 import 'package:flutter_gimnario_app/features/features.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -8,9 +9,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Profile"),
+      appBar: CustomAppBar(title: Strings.of(context)!.profile),
       body: Center(
-        child: Text('Profile Page'),
+        child: Text(Strings.of(context)!.profile),
       ),
     );
   }

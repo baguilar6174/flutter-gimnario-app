@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter_gimnario_app/core/core.dart';
@@ -24,6 +25,12 @@ class GimnarioApp extends StatelessWidget {
       builder: (context, __) {
         return MaterialApp.router(
           routerConfig: appRouter,
+          localizationsDelegates: const [
+            Strings.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           debugShowCheckedModeBanner: false,
           builder: (BuildContext context, Widget? child) {
             final MediaQueryData data = MediaQuery.of(context);
@@ -38,6 +45,8 @@ class GimnarioApp extends StatelessWidget {
           title: Constants.get.appName,
           theme: themeLight(context),
           darkTheme: themeDark(context),
+          locale: Locale("en"),
+          supportedLocales: L10n.all,
           themeMode: ThemeMode.dark,
         );
       },
