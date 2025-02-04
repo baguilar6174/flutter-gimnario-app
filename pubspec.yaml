@@ -46,6 +46,15 @@ dependencies:
   # Use for localization
   intl: any
 
+  # Use for State Management with BLoC pattern
+  flutter_bloc: ^9.0.0
+
+  # Use to compare objects
+  equatable: ^2.0.7
+
+  # Service locator, use for Dependencies Injection
+  get_it: ^8.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

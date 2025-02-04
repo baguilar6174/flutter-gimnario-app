@@ -34,6 +34,7 @@ flutter run
 - Clean Architecture
 - Responsive UI
 - Internationalization (en, es)
+- BLoC
 
 ## Features
 
