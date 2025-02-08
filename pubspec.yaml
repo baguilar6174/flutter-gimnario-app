@@ -55,6 +55,12 @@ dependencies:
   # Service locator, use for Dependencies Injection
   get_it: ^8.0.3
 
+  # Annotations for freezed
+  freezed_annotation: ^2.4.4
+
+  # Annotations for json_serializable
+  json_annotation: ^4.9.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -65,6 +71,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+  # Generating files using Dart code
+  build_runner: ^2.4.14
+  
+  # Code generator for data classes, unions, and cloning
+  freezed: ^2.5.8
+  
+  # Generate to/from JSON code for a class
+  json_serializable: ^6.9.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
