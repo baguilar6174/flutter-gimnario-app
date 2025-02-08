@@ -12,6 +12,7 @@ enum ActiveTheme {
 @freezed
 class ProfileState with _$ProfileState {
   const factory ProfileState({
+    String? title,
     String? lang,
     @Default(ActiveTheme.light) ActiveTheme activeTheme,
   }) = _ProfileState;

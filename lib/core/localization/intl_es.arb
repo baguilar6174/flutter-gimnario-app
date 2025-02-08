@@ -2,5 +2,10 @@
   "excercise": "Ejercicios",
   "workout": "Entrenamientos",
   "report": "Reporte",
-  "profile": "Perfil"
+  "profile": "Perfil",
+  "chooseTheme": "Elegir Tema",
+  "themeSystem": "Tema del Sistema",
+  "themeLight": "Tema Claro",
+  "themeDark": "Tema Oscuro",
+  "chooseLanguage": "Elegir Idioma"
 }

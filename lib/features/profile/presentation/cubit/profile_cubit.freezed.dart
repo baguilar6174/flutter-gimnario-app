@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileState {
+  String? get title => throw _privateConstructorUsedError;
   String? get lang => throw _privateConstructorUsedError;
   ActiveTheme get activeTheme => throw _privateConstructorUsedError;
 
@@ -32,7 +33,7 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({String? lang, ActiveTheme activeTheme});
+  $Res call({String? title, String? lang, ActiveTheme activeTheme});
 }
 
 /// @nodoc
@@ -50,10 +51,15 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? title = freezed,
     Object? lang = freezed,
     Object? activeTheme = null,
   }) {
     return _then(_value.copyWith(
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       lang: freezed == lang
           ? _value.lang
           : lang // ignore: cast_nullable_to_non_nullable
@@ -74,7 +80,7 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? lang, ActiveTheme activeTheme});
+  $Res call({String? title, String? lang, ActiveTheme activeTheme});
 }
 
 /// @nodoc
@@ -90,10 +96,15 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? title = freezed,
     Object? lang = freezed,
     Object? activeTheme = null,
   }) {
     return _then(_$ProfileStateImpl(
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       lang: freezed == lang
           ? _value.lang
           : lang // ignore: cast_nullable_to_non_nullable
@@ -109,8 +120,11 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileStateImpl implements _ProfileState {
-  const _$ProfileStateImpl({this.lang, this.activeTheme = ActiveTheme.light});
+  const _$ProfileStateImpl(
+      {this.title, this.lang, this.activeTheme = ActiveTheme.light});
 
+  @override
+  final String? title;
   @override
   final String? lang;
   @override
@@ -119,7 +133,7 @@ class _$ProfileStateImpl implements _ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(lang: $lang, activeTheme: $activeTheme)';
+    return 'ProfileState(title: $title, lang: $lang, activeTheme: $activeTheme)';
   }
 
   @override
@@ -127,13 +141,14 @@ class _$ProfileStateImpl implements _ProfileState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileStateImpl &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.lang, lang) || other.lang == lang) &&
             (identical(other.activeTheme, activeTheme) ||
                 other.activeTheme == activeTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lang, activeTheme);
+  int get hashCode => Object.hash(runtimeType, title, lang, activeTheme);
 
   /// Create a copy of ProfileState
   /// with the given fields replaced by the non-null parameter values.
@@ -146,8 +161,12 @@ class _$ProfileStateImpl implements _ProfileState {
 
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
-      {final String? lang, final ActiveTheme activeTheme}) = _$ProfileStateImpl;
+      {final String? title,
+      final String? lang,
+      final ActiveTheme activeTheme}) = _$ProfileStateImpl;
 
+  @override
+  String? get title;
   @override
   String? get lang;
   @override

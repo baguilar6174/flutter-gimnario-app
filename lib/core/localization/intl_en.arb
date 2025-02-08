@@ -2,5 +2,10 @@
   "excercise": "Exercises",
   "workout": "Workouts",
   "report": "Report",
-  "profile": "Profile"
+  "profile": "Profile",
+  "chooseTheme": "Choose Theme",
+  "themeSystem": "Theme System",
+  "themeLight": "Theme Light",
+  "themeDark": "Theme Dark",
+  "chooseLanguage": "Choose Language"
 }
