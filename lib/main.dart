@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:flutter_gimnario_app/dependencies_injection.dart';
 import 'package:flutter_gimnario_app/gimnario_app.dart';
 
 void main() {
@@ -10,6 +11,10 @@ void main() {
     /// Lock device orientation to portrait
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+
+      /// Register Service locator
+      await serviceLocator();
+
       return SystemChrome.setPreferredOrientations(
         [
           DeviceOrientation.portraitUp,
