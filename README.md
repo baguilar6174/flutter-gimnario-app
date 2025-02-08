@@ -14,6 +14,12 @@ If you add new texts, you need to run the following command:
 flutter pub get
 ```
 
+## Generate files
+
+```bash
+flutter packages pub run build_runner build
+```
+
 ## Run
 
 ```bash
@@ -34,7 +40,7 @@ flutter run
 - Clean Architecture
 - Responsive UI
 - Internationalization (en, es)
-- BLoC
+- Cubit State Management
 
 ## Features
 
