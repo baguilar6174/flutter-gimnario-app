@@ -55,6 +55,12 @@ dependencies:
   # Service locator, use for Dependencies Injection
   get_it: ^8.0.3
 
+  # Isar Local database
+  isar: 3.1.0+1
+
+  # Flutter binaries for the Isar Database
+  isar_flutter_libs: 3.1.0+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,8 +72,11 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
+  # Code generator for the Isar Database 
+  isar_generator: 3.1.0+1
+
   # Generating files using Dart code
-  build_runner: ^2.4.14
+  build_runner: ^2.4.13
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

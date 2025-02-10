@@ -8,27 +8,18 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileState(lang: 'en'));
 
   void updateTheme(ActiveTheme activeTheme) {
-    emit(
-      ProfileState(activeTheme: activeTheme),
-    );
+    emit(state.copyWith(activeTheme: activeTheme));
   }
 
   void updateLanguage(String type) {
-    emit(
-      ProfileState(lang: type, activeTheme: getActiveTheme()),
-    );
+    emit(state.copyWith(lang: type));
   }
 
   ActiveTheme getActiveTheme() {
     final activeTheme = ActiveTheme.values.singleWhere(
       (element) => element.name == (ActiveTheme.system.name),
     );
-    emit(
-      ProfileState(
-        activeTheme: activeTheme,
-        lang: "en",
-      ),
-    );
+    emit(state.copyWith(activeTheme: activeTheme));
     return activeTheme;
   }
 }

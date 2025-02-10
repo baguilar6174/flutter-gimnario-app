@@ -7,6 +7,17 @@ allprojects {
 
 rootProject.buildDir = "../build"
 subprojects {
+    // !Solution for isar_flutter_libs error
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (namespace == null) {
+                    namespace project.group
+                }
+            }
+        }
+    }
+    /// end of solution
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 subprojects {
