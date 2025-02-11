@@ -1,2 +1,2 @@
-export 'isar_datasource.dart';
+export 'isar_datasource_impl.dart';
 export 'local_datasource.dart';
