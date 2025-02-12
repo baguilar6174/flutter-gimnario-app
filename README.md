@@ -73,8 +73,6 @@ flutter run
   - Import data
   - Calendar
 - Settings
-  - Language
-  - Theme (light or dark)
   - Notifications
 
 ## Improves and TODOS

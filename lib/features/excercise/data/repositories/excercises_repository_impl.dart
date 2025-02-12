@@ -1,11 +1,10 @@
-import 'package:flutter_gimnario_app/core/error/failure.dart';
-import 'package:flutter_gimnario_app/features/excercise/data/datasources/datasources.dart';
-import 'package:flutter_gimnario_app/features/excercise/domain/domain.dart';
-
 import 'package:fpdart/fpdart.dart';
 
+import 'package:flutter_gimnario_app/core/error/failure.dart';
+import 'package:flutter_gimnario_app/features/excercise/domain/domain.dart';
+
 class ExcercisesRepositoryImpl implements ExcercisesRepository {
-  final ExcerciseLocalDatasource datasource;
+  final ExcercisesDatasource datasource;
 
   const ExcercisesRepositoryImpl(this.datasource);
 
@@ -15,9 +14,7 @@ class ExcercisesRepositoryImpl implements ExcercisesRepository {
     return response.fold(
       (failure) => Left(failure),
       (exercisesResponse) {
-        if (exercisesResponse.isEmpty) {
-          return Left(NoDataFailure());
-        }
+        if (exercisesResponse.isEmpty) return Left(NoDataFailure());
         return Right(exercisesResponse);
       },
     );
@@ -29,9 +26,7 @@ class ExcercisesRepositoryImpl implements ExcercisesRepository {
     return response.fold(
       (failure) => Left(failure),
       (muscleGroupsResponse) {
-        if (muscleGroupsResponse.isEmpty) {
-          return Left(NoDataFailure());
-        }
+        if (muscleGroupsResponse.isEmpty) return Left(NoDataFailure());
         return Right(muscleGroupsResponse);
       },
     );

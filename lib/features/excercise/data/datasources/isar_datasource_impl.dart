@@ -2,11 +2,10 @@ import 'package:fpdart/fpdart.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:flutter_gimnario_app/features/excercise/data/datasources/local_datasource.dart';
 import 'package:flutter_gimnario_app/features/excercise/domain/domain.dart';
 import 'package:flutter_gimnario_app/core/core.dart';
 
-class IsarLocalDatasourceImpl implements ExcerciseLocalDatasource {
+class IsarLocalDatasourceImpl implements ExcercisesDatasource {
   late Future<Isar> db;
 
   IsarLocalDatasourceImpl() {

@@ -19,7 +19,7 @@ void _repositories() {
 
 /// Register dataSources
 void _dataSources() {
-  sl.registerLazySingleton<ExcerciseLocalDatasource>(
+  sl.registerLazySingleton<ExcercisesDatasource>(
     () => IsarLocalDatasourceImpl(),
   );
 }
