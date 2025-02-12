@@ -7,5 +7,7 @@
   "themeSystem": "Tema del Sistema",
   "themeLight": "Tema Claro",
   "themeDark": "Tema Oscuro",
-  "chooseLanguage": "Elegir Idioma"
+  "chooseLanguage": "Elegir Idioma",
+  "pleaseWait": "Por favor espere...",
+  "errorNoData": "Sin datos"
 }

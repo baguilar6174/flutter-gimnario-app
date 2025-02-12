@@ -7,5 +7,7 @@
   "themeSystem": "Theme System",
   "themeLight": "Theme Light",
   "themeDark": "Theme Dark",
-  "chooseLanguage": "Choose Language"
+  "chooseLanguage": "Choose Language",
+  "pleaseWait": "Please Wait...",
+  "errorNoData": "No data"
 }

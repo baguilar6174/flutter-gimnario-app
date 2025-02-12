@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:flutter_gimnario_app/dependencies_injection.dart';
 import 'package:flutter_gimnario_app/features/features.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -35,7 +37,10 @@ final appRouter = GoRouter(
           GoRoute(
             path: Routes.excercise.path,
             name: Routes.excercise.name,
-            builder: (context, state) => ExcercisePage(),
+            builder: (_, __) => BlocProvider(
+              create: (_) => sl<ExcerciseCubit>()..fetchExercises(),
+              child: const ExcercisePage(),
+            ),
           ),
         ]),
         StatefulShellBranch(routes: [

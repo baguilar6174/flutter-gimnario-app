@@ -10,12 +10,30 @@ class ExcercisesRepositoryImpl implements ExcercisesRepository {
   const ExcercisesRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<Failure, List<Exercise>>> exercises() {
-    return datasource.exercises();
+  Future<Either<Failure, List<Exercise>>> exercises() async {
+    final response = await datasource.exercises();
+    return response.fold(
+      (failure) => Left(failure),
+      (exercisesResponse) {
+        if (exercisesResponse.isEmpty) {
+          return Left(NoDataFailure());
+        }
+        return Right(exercisesResponse);
+      },
+    );
   }
 
   @override
-  Future<Either<Failure, List<MuscleGroup>>> muscleGroups() {
-    return datasource.muscleGroups();
+  Future<Either<Failure, List<MuscleGroup>>> muscleGroups() async {
+    final response = await datasource.muscleGroups();
+    return response.fold(
+      (failure) => Left(failure),
+      (muscleGroupsResponse) {
+        if (muscleGroupsResponse.isEmpty) {
+          return Left(NoDataFailure());
+        }
+        return Right(muscleGroupsResponse);
+      },
+    );
   }
 }
