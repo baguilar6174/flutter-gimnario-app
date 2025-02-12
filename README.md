@@ -30,9 +30,11 @@ flutter run
 
 ### Built with
 
-- Flutter 3.27.0
-- Dart 3.6.0
-- 
+- Flutter 3.27.0 & Dart 3.6.0
+- isar (Database and storage)
+- Bloc and Cubit (state management)
+- get_it (dependency injection)
+- fpdart (functional programming)
 
 ## Development Features
 
@@ -41,8 +43,9 @@ flutter run
 - Responsive UI
 - Internationalization (en, es)
 - Cubit State Management
+- Dark/light theme
 
-## Features
+## TODO: Features
 
 - Manage workouts
   - Manage times (stopwatches or timers)
