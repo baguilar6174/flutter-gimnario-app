@@ -25,7 +25,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.sports_handball),
-          label: Strings.of(context)!.excercise,
+          label: Strings.of(context)!.exercise,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.leaderboard),

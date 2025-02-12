@@ -13,13 +13,13 @@ Future<void> serviceLocator() async {
 
 /// Register repositories
 void _repositories() {
-  sl.registerLazySingleton<ExcercisesRepository>(
-      () => ExcercisesRepositoryImpl(sl()));
+  sl.registerLazySingleton<ExercisesRepository>(
+      () => ExercisesRepositoryImpl(sl()));
 }
 
 /// Register dataSources
 void _dataSources() {
-  sl.registerLazySingleton<ExcercisesDatasource>(
+  sl.registerLazySingleton<ExercisesDatasource>(
     () => IsarLocalDatasourceImpl(),
   );
 }
@@ -33,6 +33,6 @@ void _cubit() {
   /// Profile
   sl.registerFactory(() => ProfileCubit());
 
-  /// Excercise
-  sl.registerFactory(() => ExcerciseCubit(sl()));
+  /// Exercise
+  sl.registerFactory(() => ExercisesCubit(sl()));
 }

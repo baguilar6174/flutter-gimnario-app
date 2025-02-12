@@ -9,7 +9,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 enum Routes {
   root("/"),
-  excercise("/excercise"),
+  exercises("/exercise"),
   report("/report"),
   profile("/profile");
 
@@ -35,11 +35,11 @@ final appRouter = GoRouter(
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
-            path: Routes.excercise.path,
-            name: Routes.excercise.name,
+            path: Routes.exercises.path,
+            name: Routes.exercises.name,
             builder: (_, __) => BlocProvider(
-              create: (_) => sl<ExcerciseCubit>()..fetchExercises(),
-              child: const ExcercisePage(),
+              create: (_) => sl<ExercisesCubit>()..fetchExercises(),
+              child: const ExercisesPage(),
             ),
           ),
         ]),
