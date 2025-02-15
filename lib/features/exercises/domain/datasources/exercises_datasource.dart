@@ -6,4 +6,5 @@ import 'package:flutter_gimnario_app/core/core.dart';
 abstract interface class ExercisesDatasource {
   Future<Either<Failure, List<Exercise>>> exercises();
   Future<Either<Failure, List<MuscleGroup>>> muscleGroups();
+  Future<Either<Failure, Unit>> createSeed();
 }

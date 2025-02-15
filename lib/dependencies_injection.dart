@@ -35,6 +35,7 @@ void _dataSources() {
 void _useCase() {
   /// Exercises
   sl.registerLazySingleton(() => GetExercises(sl<ExercisesRepository>()));
+  sl.registerLazySingleton(() => CreateSeed(sl<ExercisesRepository>()));
 }
 
 void _cubit() {
@@ -42,5 +43,6 @@ void _cubit() {
   sl.registerFactory(() => ProfileCubit());
 
   /// Exercise
+  sl.registerFactory(() => SeedCubit(sl<CreateSeed>()));
   sl.registerFactory(() => ExercisesCubit(sl<GetExercises>()));
 }

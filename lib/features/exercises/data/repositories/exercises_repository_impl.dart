@@ -31,4 +31,9 @@ class ExercisesRepositoryImpl implements ExercisesRepository {
       },
     );
   }
+
+  @override
+  Future<Either<Failure, Unit>> createSeed() async {
+    return await datasource.createSeed();
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +10,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 enum Routes {
   root("/"),
+  splashScreen("/splashscreen"),
   exercises("/exercise"),
   report("/report"),
   profile("/profile");
@@ -19,8 +21,12 @@ enum Routes {
 
 final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: Routes.root.path,
   routes: [
+    GoRoute(
+      path: Routes.splashScreen.path,
+      name: Routes.splashScreen.name,
+      builder: (context, state) => SplashPage(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => HomePage(
         navigationShell: shell,
@@ -62,4 +68,7 @@ final appRouter = GoRouter(
       ],
     ),
   ],
+  initialLocation: Routes.splashScreen.path,
+  routerNeglect: true,
+  debugLogDiagnostics: kDebugMode,
 );
