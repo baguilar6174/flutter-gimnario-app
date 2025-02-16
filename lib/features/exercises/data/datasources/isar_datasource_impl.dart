@@ -10,20 +10,22 @@ class IsarLocalDatasourceImpl implements ExercisesDatasource {
   const IsarLocalDatasourceImpl(this.db);
 
   @override
-  Future<Either<Failure, List<ExerciseModel>>> exercises() async {
+  Future<Either<Failure, List<Exercise>>> exercises() async {
     try {
       final response = await db.exerciseModels.where().findAll();
-      return Right(response);
+      final exercises = response.map((model) => model.toEntity()).toList();
+      return Right(exercises);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, List<MuscleGroupModel>>> muscleGroups() async {
+  Future<Either<Failure, List<MuscleGroup>>> muscleGroups() async {
     try {
       final response = await db.muscleGroupModels.where().findAll();
-      return Right(response);
+      final muscleGroups = response.map((model) => model.toEntity()).toList();
+      return Right(muscleGroups);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
@@ -32,113 +34,81 @@ class IsarLocalDatasourceImpl implements ExercisesDatasource {
   @override
   Future<Either<Failure, Unit>> createSeed() async {
     try {
-      await seedMuscleGroups();
-      await seedExercises();
+      await seedDatabase();
       return const Right(unit);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
   }
 
-  Future<void> seedMuscleGroups() async {
-    final muscleGroups = [
-      MuscleGroupModel()
-        ..name = "Chest"
-        ..description = "Pectoral muscles",
-      MuscleGroupModel()
-        ..name = "Back"
-        ..description = "Upper and lower back muscles",
-      MuscleGroupModel()
-        ..name = "Shoulders"
-        ..description = "Deltoid muscles",
-      MuscleGroupModel()
-        ..name = "Biceps"
-        ..description = "Front of upper arm",
-      MuscleGroupModel()
-        ..name = "Triceps"
-        ..description = "Back of upper arm",
-      MuscleGroupModel()
-        ..name = "Legs"
-        ..description = "Quadriceps, hamstrings, calves",
-      MuscleGroupModel()
-        ..name = "Core"
-        ..description = "Abdominals and obliques",
-    ];
-
+  Future<void> seedDatabase() async {
+    // Clear existing data (optional)
     await db.writeTxn(() async {
-      await db.muscleGroupModels.putAll(muscleGroups);
+      await db.exerciseModels.clear();
+      await db.muscleGroupModels.clear();
     });
-  }
 
-  Future<void> seedExercises() async {
-    final chest =
-        await db.muscleGroupModels.filter().nameEqualTo("Chest").findFirst();
-    final back =
-        await db.muscleGroupModels.filter().nameEqualTo("Back").findFirst();
-    final shoulders = await db.muscleGroupModels
-        .filter()
-        .nameEqualTo("Shoulders")
-        .findFirst();
-    final biceps =
-        await db.muscleGroupModels.filter().nameEqualTo("Biceps").findFirst();
-    final triceps =
-        await db.muscleGroupModels.filter().nameEqualTo("Triceps").findFirst();
-    final legs =
-        await db.muscleGroupModels.filter().nameEqualTo("Legs").findFirst();
-    final core =
-        await db.muscleGroupModels.filter().nameEqualTo("Core").findFirst();
+    // Define muscle groups
+    final chest = MuscleGroupModel()
+      ..name = 'Chest'
+      ..description = 'Primary chest muscles';
 
-    if (chest == null ||
-        back == null ||
-        shoulders == null ||
-        biceps == null ||
-        triceps == null ||
-        legs == null ||
-        core == null) {
-      return;
-    }
+    final legs = MuscleGroupModel()
+      ..name = 'Legs'
+      ..description = 'Primary leg muscles';
 
-    final exercises = [
-      ExerciseModel()
-        ..name = "Bench Press"
-        ..description = "A compound exercise that targets the chest."
-        ..equipment = ["Barbell", "Bench"]
-        ..difficulty = "Intermediate"
-        ..videoUrl = "example"
-        ..muscleGroups.add(chest),
-      ExerciseModel()
-        ..name = "Pull-Up"
-        ..description =
-            "A bodyweight exercise that targets the back and biceps."
-        ..equipment = ["Pull-Up Bar"]
-        ..difficulty = "Advanced"
-        ..videoUrl = "example"
-        ..muscleGroups.addAll([back, biceps]),
-      ExerciseModel()
-        ..name = "Shoulder Press"
-        ..description = "An overhead pressing movement for shoulders."
-        ..equipment = ["Dumbbells"]
-        ..difficulty = "Intermediate"
-        ..videoUrl = "example"
-        ..muscleGroups.add(shoulders),
-      ExerciseModel()
-        ..name = "Squat"
-        ..description = "A lower-body exercise that targets the legs."
-        ..equipment = ["Barbell"]
-        ..difficulty = "Intermediate"
-        ..videoUrl = "example"
-        ..muscleGroups.add(legs),
-      ExerciseModel()
-        ..name = "Plank"
-        ..description = "An isometric core exercise for stability."
-        ..equipment = ["None"]
-        ..difficulty = "Beginner"
-        ..videoUrl = "example"
-        ..muscleGroups.add(core),
-    ];
+    final back = MuscleGroupModel()
+      ..name = 'Back'
+      ..description = 'Primary back muscles';
 
+    // Define exercises
+    final pushUp = ExerciseModel()
+      ..name = 'Push-up'
+      ..description = 'A classic bodyweight exercise for the chest'
+      ..equipment = ['None']
+      ..difficulty = 'Beginner'
+      ..videoUrl = 'https://example.com/push-up';
+
+    final benchPress = ExerciseModel()
+      ..name = 'Bench Press'
+      ..description = 'A compound exercise for the chest using a barbell'
+      ..equipment = ['Barbell', 'Bench']
+      ..difficulty = 'Intermediate'
+      ..videoUrl = 'https://example.com/bench-press';
+
+    final squat = ExerciseModel()
+      ..name = 'Squat'
+      ..description = 'A compound exercise for the legs using a barbell'
+      ..equipment = ['Barbell']
+      ..difficulty = 'Intermediate'
+      ..videoUrl = 'https://example.com/squat';
+
+    final deadlift = ExerciseModel()
+      ..name = 'Deadlift'
+      ..description =
+          'A compound exercise for the back and legs using a barbell'
+      ..equipment = ['Barbell']
+      ..difficulty = 'Advanced'
+      ..videoUrl = 'https://example.com/deadlift';
+
+    // Link exercises to muscle groups
+    chest.exercises.add(pushUp);
+    chest.exercises.add(benchPress);
+    legs.exercises.add(squat);
+    back.exercises.add(deadlift);
+
+    // Save data to the database
     await db.writeTxn(() async {
-      await db.exerciseModels.putAll(exercises);
+      // Save muscle groups
+      await db.muscleGroupModels.putAll([chest, legs, back]);
+
+      // Save exercises
+      await db.exerciseModels.putAll([pushUp, benchPress, squat, deadlift]);
+
+      // Save relationships
+      await chest.exercises.save();
+      await legs.exercises.save();
+      await back.exercises.save();
     });
   }
 }

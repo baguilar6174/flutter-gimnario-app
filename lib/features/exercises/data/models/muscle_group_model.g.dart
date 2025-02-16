@@ -39,7 +39,15 @@ const MuscleGroupModelSchema = CollectionSchema(
   deserializeProp: _muscleGroupModelDeserializeProp,
   idName: r'id',
   indexes: {},
-  links: {},
+  links: {
+    r'exercises': LinkSchema(
+      id: -1517595193237927829,
+      name: r'exercises',
+      target: r'ExerciseModel',
+      single: false,
+      linkName: r'muscleGroups',
+    )
+  },
   embeddedSchemas: {},
   getId: _muscleGroupModelGetId,
   getLinks: _muscleGroupModelGetLinks,
@@ -111,12 +119,14 @@ Id _muscleGroupModelGetId(MuscleGroupModel object) {
 }
 
 List<IsarLinkBase<dynamic>> _muscleGroupModelGetLinks(MuscleGroupModel object) {
-  return [];
+  return [object.exercises];
 }
 
 void _muscleGroupModelAttach(
     IsarCollection<dynamic> col, Id id, MuscleGroupModel object) {
   object.id = id;
+  object.exercises
+      .attach(col, col.isar.collection<ExerciseModel>(), r'exercises', id);
 }
 
 extension MuscleGroupModelQueryWhereSort
@@ -625,7 +635,68 @@ extension MuscleGroupModelQueryObject
     on QueryBuilder<MuscleGroupModel, MuscleGroupModel, QFilterCondition> {}
 
 extension MuscleGroupModelQueryLinks
-    on QueryBuilder<MuscleGroupModel, MuscleGroupModel, QFilterCondition> {}
+    on QueryBuilder<MuscleGroupModel, MuscleGroupModel, QFilterCondition> {
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercises(FilterQuery<ExerciseModel> q) {
+    return QueryBuilder.apply(this, (query) {
+      return query.link(q, r'exercises');
+    });
+  }
+
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercisesLengthEqualTo(int length) {
+    return QueryBuilder.apply(this, (query) {
+      return query.linkLength(r'exercises', length, true, length, true);
+    });
+  }
+
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercisesIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.linkLength(r'exercises', 0, true, 0, true);
+    });
+  }
+
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercisesIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.linkLength(r'exercises', 0, false, 999999, true);
+    });
+  }
+
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercisesLengthLessThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.linkLength(r'exercises', 0, true, length, include);
+    });
+  }
+
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercisesLengthGreaterThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.linkLength(r'exercises', length, include, 999999, true);
+    });
+  }
+
+  QueryBuilder<MuscleGroupModel, MuscleGroupModel, QAfterFilterCondition>
+      exercisesLengthBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.linkLength(
+          r'exercises', lower, includeLower, upper, includeUpper);
+    });
+  }
+}
 
 extension MuscleGroupModelQuerySortBy
     on QueryBuilder<MuscleGroupModel, MuscleGroupModel, QSortBy> {
