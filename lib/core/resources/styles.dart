@@ -444,3 +444,11 @@ class BoxShadows {
         blurRadius: 4.0,
       );
 }
+
+extension TextThemeExtension on TextTheme {
+  TextStyle? get titleLargeBold =>
+      titleMedium?.copyWith(fontWeight: FontWeight.bold);
+
+  TextStyle? get bodyMedium500 =>
+      bodyMedium?.copyWith(fontWeight: FontWeight.w500);
+}

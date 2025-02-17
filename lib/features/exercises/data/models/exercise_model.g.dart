@@ -32,14 +32,14 @@ const ExerciseModelSchema = CollectionSchema(
       name: r'equipment',
       type: IsarType.stringList,
     ),
-    r'name': PropertySchema(
+    r'imageUrl': PropertySchema(
       id: 3,
-      name: r'name',
+      name: r'imageUrl',
       type: IsarType.string,
     ),
-    r'videoUrl': PropertySchema(
+    r'name': PropertySchema(
       id: 4,
-      name: r'videoUrl',
+      name: r'name',
       type: IsarType.string,
     )
   },
@@ -89,13 +89,8 @@ int _exerciseModelEstimateSize(
       }
     }
   }
+  bytesCount += 3 + object.imageUrl.length * 3;
   bytesCount += 3 + object.name.length * 3;
-  {
-    final value = object.videoUrl;
-    if (value != null) {
-      bytesCount += 3 + value.length * 3;
-    }
-  }
   return bytesCount;
 }
 
@@ -108,8 +103,8 @@ void _exerciseModelSerialize(
   writer.writeString(offsets[0], object.description);
   writer.writeString(offsets[1], object.difficulty);
   writer.writeStringList(offsets[2], object.equipment);
-  writer.writeString(offsets[3], object.name);
-  writer.writeString(offsets[4], object.videoUrl);
+  writer.writeString(offsets[3], object.imageUrl);
+  writer.writeString(offsets[4], object.name);
 }
 
 ExerciseModel _exerciseModelDeserialize(
@@ -123,8 +118,8 @@ ExerciseModel _exerciseModelDeserialize(
   object.difficulty = reader.readString(offsets[1]);
   object.equipment = reader.readStringList(offsets[2]);
   object.id = id;
-  object.name = reader.readString(offsets[3]);
-  object.videoUrl = reader.readStringOrNull(offsets[4]);
+  object.imageUrl = reader.readString(offsets[3]);
+  object.name = reader.readString(offsets[4]);
   return object;
 }
 
@@ -144,7 +139,7 @@ P _exerciseModelDeserializeProp<P>(
     case 3:
       return (reader.readString(offset)) as P;
     case 4:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -835,6 +830,142 @@ extension ExerciseModelQueryFilter
     });
   }
 
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'imageUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'imageUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'imageUrl',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'imageUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'imageUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'imageUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'imageUrl',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'imageUrl',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
+      imageUrlIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'imageUrl',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -969,160 +1100,6 @@ extension ExerciseModelQueryFilter
       ));
     });
   }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'videoUrl',
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'videoUrl',
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'videoUrl',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlGreaterThan(
-    String? value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'videoUrl',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlLessThan(
-    String? value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'videoUrl',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlBetween(
-    String? lower,
-    String? upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'videoUrl',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'videoUrl',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'videoUrl',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'videoUrl',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'videoUrl',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'videoUrl',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterFilterCondition>
-      videoUrlIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'videoUrl',
-        value: '',
-      ));
-    });
-  }
 }
 
 extension ExerciseModelQueryObject
@@ -1220,6 +1197,19 @@ extension ExerciseModelQuerySortBy
     });
   }
 
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> sortByImageUrl() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageUrl', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy>
+      sortByImageUrlDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageUrl', Sort.desc);
+    });
+  }
+
   QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -1229,19 +1219,6 @@ extension ExerciseModelQuerySortBy
   QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> sortByVideoUrl() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'videoUrl', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy>
-      sortByVideoUrlDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'videoUrl', Sort.desc);
     });
   }
 }
@@ -1286,6 +1263,19 @@ extension ExerciseModelQuerySortThenBy
     });
   }
 
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> thenByImageUrl() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageUrl', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy>
+      thenByImageUrlDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'imageUrl', Sort.desc);
+    });
+  }
+
   QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
@@ -1295,19 +1285,6 @@ extension ExerciseModelQuerySortThenBy
   QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> thenByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy> thenByVideoUrl() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'videoUrl', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QAfterSortBy>
-      thenByVideoUrlDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'videoUrl', Sort.desc);
     });
   }
 }
@@ -1334,17 +1311,17 @@ extension ExerciseModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<ExerciseModel, ExerciseModel, QDistinct> distinctByImageUrl(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'imageUrl', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<ExerciseModel, ExerciseModel, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<ExerciseModel, ExerciseModel, QDistinct> distinctByVideoUrl(
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'videoUrl', caseSensitive: caseSensitive);
     });
   }
 }
@@ -1376,15 +1353,15 @@ extension ExerciseModelQueryProperty
     });
   }
 
-  QueryBuilder<ExerciseModel, String, QQueryOperations> nameProperty() {
+  QueryBuilder<ExerciseModel, String, QQueryOperations> imageUrlProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'name');
+      return query.addPropertyName(r'imageUrl');
     });
   }
 
-  QueryBuilder<ExerciseModel, String?, QQueryOperations> videoUrlProperty() {
+  QueryBuilder<ExerciseModel, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'videoUrl');
+      return query.addPropertyName(r'name');
     });
   }
 }

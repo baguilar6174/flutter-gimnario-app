@@ -5,6 +5,6 @@ class Exercise {
   String? description;
   List<String>? equipment;
   late String difficulty;
-  String? videoUrl;
-  List<MuscleGroup>? muscleGroups;
+  late String imageUrl;
+  late List<MuscleGroup> muscleGroups;
 }

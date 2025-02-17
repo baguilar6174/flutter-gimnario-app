@@ -13,7 +13,7 @@ class ExerciseModel {
   String? description;
   List<String>? equipment;
   late String difficulty;
-  String? videoUrl;
+  late String imageUrl;
 
   final muscleGroups = IsarLinks<MuscleGroupModel>(); // m:m
 
@@ -24,7 +24,7 @@ class ExerciseModel {
       ..description = description
       ..equipment = equipment
       ..difficulty = difficulty
-      ..videoUrl = videoUrl
+      ..imageUrl = imageUrl
       ..muscleGroups =
           muscleGroups.toList().map((mg) => mg.toEntity()).toList();
   }
@@ -37,7 +37,7 @@ class ExerciseModel {
       'description': description,
       'equipment': equipment,
       'difficulty': difficulty,
-      'videoUrl': videoUrl,
+      'imageUrl': imageUrl,
       'muscleGroups': muscleGroups.map((mg) => mg.toJson()).toList(),
     };
   }
