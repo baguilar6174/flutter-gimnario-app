@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_gimnario_app/core/core.dart';
 import 'package:flutter_gimnario_app/features/features.dart';
+import 'package:gif_view/gif_view.dart';
 
 class ExercisesPage extends StatelessWidget {
   const ExercisesPage({super.key});
@@ -61,15 +62,12 @@ class ExercisesPage extends StatelessWidget {
               topLeft: Radius.circular(Dimens.space8),
               bottomLeft: Radius.circular(Dimens.space8),
             ),
-            // child: CachedNetworkImage(
-            //   imageUrl: user.avatar ?? "",
-            //   width: Dimens.profilePicture,
-            //   height: Dimens.profilePicture,
-            //   fit: BoxFit.cover,
-            // ),
-            child: SizedBox(
+            child: GifView.asset(
+              exercise.imageUrl,
               width: Dimens.profilePicture,
               height: Dimens.profilePicture,
+              fit: BoxFit.cover,
+              autoPlay: false,
             ),
           ),
           SpacerH(value: Dimens.space16),

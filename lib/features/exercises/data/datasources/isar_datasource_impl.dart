@@ -71,21 +71,21 @@ class IsarLocalDatasourceImpl implements ExercisesDatasource {
       ..description = 'A classic bodyweight exercise for the chest'
       ..equipment = ['None']
       ..difficulty = 'Beginner'
-      ..imageUrl = 'https://example.com/push-up';
+      ..imageUrl = 'assets/images/push-up.gif';
 
     final benchPress = ExerciseModel()
       ..name = 'Bench Press'
       ..description = 'A compound exercise for the chest using a barbell'
       ..equipment = ['Barbell', 'Bench']
       ..difficulty = 'Intermediate'
-      ..imageUrl = 'bench-press.gif';
+      ..imageUrl = 'assets/images/bench-press.gif';
 
     final squat = ExerciseModel()
       ..name = 'Squat'
       ..description = 'A compound exercise for the legs using a barbell'
       ..equipment = ['Barbell']
       ..difficulty = 'Intermediate'
-      ..imageUrl = 'squat.gif';
+      ..imageUrl = 'assets/images/squat.gif';
 
     final deadlift = ExerciseModel()
       ..name = 'Deadlift'
@@ -93,14 +93,14 @@ class IsarLocalDatasourceImpl implements ExercisesDatasource {
           'A compound exercise for the back and legs using a barbell'
       ..equipment = ['Barbell']
       ..difficulty = 'Advanced'
-      ..imageUrl = 'deadlift.gif';
+      ..imageUrl = 'assets/images/deadlift.gif';
 
     final pullUp = ExerciseModel()
       ..name = 'Pull-up'
       ..description = 'A compound exercise for the back and biceps'
       ..equipment = ['Pull-up bar']
       ..difficulty = 'Intermediate'
-      ..imageUrl = 'pull-up.gif';
+      ..imageUrl = 'assets/images/pull-up.gif';
 
     // Link exercises to muscle groups
     chest.exercises.add(pushUp);
