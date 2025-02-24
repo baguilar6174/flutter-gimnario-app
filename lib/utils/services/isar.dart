@@ -9,7 +9,11 @@ class IsarService {
 
     if (Isar.instanceNames.isEmpty) {
       return await Isar.open(
-        [ExerciseModelSchema, MuscleGroupModelSchema],
+        [
+          ExerciseModelSchema,
+          MuscleGroupModelSchema,
+          WorkoutModelSchema,
+        ],
         inspector: true,
         directory: dir.path,
       );

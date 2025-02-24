@@ -28,7 +28,7 @@ void _repositories() {
 /// Register dataSources
 void _dataSources() {
   sl.registerLazySingleton<ExercisesDatasource>(
-    () => IsarLocalDatasourceImpl(sl<Isar>()),
+    () => IsarLocalExercisesDatasourceImpl(sl<Isar>()),
   );
 }
 

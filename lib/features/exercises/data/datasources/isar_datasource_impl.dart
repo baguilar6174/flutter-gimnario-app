@@ -4,10 +4,10 @@ import 'package:isar/isar.dart';
 import 'package:flutter_gimnario_app/core/core.dart';
 import 'package:flutter_gimnario_app/features/exercises/exercises.dart';
 
-class IsarLocalDatasourceImpl implements ExercisesDatasource {
+class IsarLocalExercisesDatasourceImpl implements ExercisesDatasource {
   final Isar db;
 
-  const IsarLocalDatasourceImpl(this.db);
+  const IsarLocalExercisesDatasourceImpl(this.db);
 
   @override
   Future<Either<Failure, List<Exercise>>> exercises() async {
