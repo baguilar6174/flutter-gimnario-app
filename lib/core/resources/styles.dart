@@ -103,6 +103,9 @@ ThemeData themeLight(BuildContext context) => ThemeData(
         unselectedItemColor: Palette.shadowDark,
         backgroundColor: Palette.background,
       ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Palette.primary,
+      ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       extensions: const <ThemeExtension<dynamic>>[
         AppColors(
@@ -231,6 +234,9 @@ ThemeData themeDark(BuildContext context) => ThemeData(
         selectedItemColor: Palette.primary,
         unselectedItemColor: Palette.shadowDark,
         backgroundColor: Palette.backgroundDark,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Palette.primary,
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       extensions: const <ThemeExtension<dynamic>>[

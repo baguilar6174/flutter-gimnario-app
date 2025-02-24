@@ -36,7 +36,10 @@ final appRouter = GoRouter(
           GoRoute(
             path: Routes.root.path,
             name: Routes.root.name,
-            builder: (context, state) => WorkoutPage(),
+            builder: (_, __) => BlocProvider(
+              create: (_) => sl<WorkoutCubit>(),
+              child: const WorkoutPage(),
+            ),
           ),
         ]),
         StatefulShellBranch(routes: [
