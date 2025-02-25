@@ -86,6 +86,13 @@ WorkoutModel _workoutModelDeserialize(
   final object = WorkoutModel();
   object.id = id;
   object.name = reader.readString(offsets[0]);
+  object.workoutExercises = reader.readObjectList<WorkoutExerciseModel>(
+        offsets[1],
+        WorkoutExerciseModelSchema.deserialize,
+        allOffsets,
+        WorkoutExerciseModel(),
+      ) ??
+      [];
   return object;
 }
 

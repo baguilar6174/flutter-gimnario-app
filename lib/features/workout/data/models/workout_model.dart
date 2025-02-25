@@ -8,7 +8,7 @@ part 'workout_model.g.dart';
 class WorkoutModel {
   Id id = Isar.autoIncrement;
   late String name;
-  final workoutExercises = <WorkoutExerciseModel>[];
+  List<WorkoutExerciseModel> workoutExercises = [];
 
   // Convert WorkoutModel to an entity (simplified representation)
   Workout toEntity() {
@@ -16,6 +16,14 @@ class WorkoutModel {
       ..name = name
       ..workoutExercises =
           workoutExercises.map((exercise) => exercise.toEntity()).toList();
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'workoutExercises': workoutExercises.map((mg) => mg.toJson()).toList(),
+    };
   }
 }
 
@@ -32,5 +40,14 @@ class WorkoutExerciseModel {
       ..sets = sets
       ..reps = reps
       ..restTime = restTime;
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'exerciseId': exerciseId,
+      'sets': sets,
+      'reps': reps,
+      'restTime': restTime,
+    };
   }
 }

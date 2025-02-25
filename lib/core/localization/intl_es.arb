@@ -9,5 +9,6 @@
   "themeDark": "Tema Oscuro",
   "chooseLanguage": "Elegir Idioma",
   "pleaseWait": "Por favor espere...",
-  "errorNoData": "Sin datos"
+  "errorNoData": "Sin datos",
+  "workoutExercisesCount": "{count} ejercicios"
 }

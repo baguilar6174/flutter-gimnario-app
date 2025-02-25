@@ -57,8 +57,8 @@ class IsarLocalWorkoutDatasourceImpl implements WorkoutDatasource {
   Future<Either<Failure, List<Workout>>> workouts() async {
     try {
       final response = await db.workoutModels.where().findAll();
-      final exercises = response.map((model) => model.toEntity()).toList();
-      return Right(exercises);
+      final workouts = response.map((model) => model.toEntity()).toList();
+      return Right(workouts);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }

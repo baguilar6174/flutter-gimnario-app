@@ -40,7 +40,7 @@ final appRouter = GoRouter(
             path: Routes.root.path,
             name: Routes.root.name,
             builder: (_, __) => BlocProvider(
-              create: (_) => sl<WorkoutCubit>(),
+              create: (_) => sl<WorkoutCubit>()..fetchWorkouts(),
               child: const WorkoutPage(),
             ),
           ),
