@@ -25,7 +25,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: Routes.splashScreen.path,
       name: Routes.splashScreen.name,
-      builder: (context, state) => SplashPage(),
+      builder: (_, __) => BlocProvider(
+        create: (_) => sl<SeedCubit>()..createSeed(),
+        child: const SplashPage(),
+      ),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => HomePage(

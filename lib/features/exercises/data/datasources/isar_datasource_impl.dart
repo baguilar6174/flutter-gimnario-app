@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:isar/isar.dart';
 
 import 'package:flutter_gimnario_app/core/core.dart';
-import 'package:flutter_gimnario_app/features/exercises/exercises.dart';
+import 'package:flutter_gimnario_app/features/features.dart';
 
 class IsarLocalExercisesDatasourceImpl implements ExercisesDatasource {
   final Isar db;
@@ -44,6 +44,7 @@ class IsarLocalExercisesDatasourceImpl implements ExercisesDatasource {
   Future<void> seedDatabase() async {
     // Clear existing data (optional)
     await db.writeTxn(() async {
+      await db.workoutModels.clear();
       await db.exerciseModels.clear();
       await db.muscleGroupModels.clear();
     });
