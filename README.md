@@ -79,6 +79,16 @@ flutter run
 
 - Integrate with external API
 
+## Gimnario App
+
+<table>
+  <tr>
+    <td align="center" valign="center"><img src="./media/exercises.png" width="100%"></td>
+    <td align="center" valign="center"><img src="./media/workout.png" width="100%"></td>
+    <td align="center" valign="center"><img src="./media/profile.png" width="100%"></td>
+  </tr>
+</table>
+
 ## Stay in touch
 
 - Website - [www.bryan-aguilar.com](https://www.bryan-aguilar.com/)
